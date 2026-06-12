@@ -5,10 +5,7 @@ import '../models/product.dart';
 class ProductRepository {
   static const String _baseUrl = 'https://dummyjson.com/products';
 
-  /// Fetch a page of products.
-  /// [limit] = page size, [skip] = offset for pagination.
-  /// If [search] is provided, hits the /search endpoint.
-  /// If [category] is provided, hits the /category/{category} endpoint.
+ 
   Future<ProductPage> fetchProducts({
     int limit = 20,
     int skip = 0,
@@ -49,7 +46,7 @@ class ProductRepository {
     );
   }
 
-  /// Fetch list of all category slugs (used for filter chips).
+
   Future<List<String>> fetchCategories() async {
     final uri = Uri.parse('$_baseUrl/categories');
     final response = await http.get(uri);
@@ -57,7 +54,7 @@ class ProductRepository {
       throw Exception('Failed to load categories (${response.statusCode})');
     }
     final data = jsonDecode(response.body) as List<dynamic>;
-    // dummyjson returns list of {slug, name, url} objects
+    
     return data
         .map((e) => (e is Map ? (e['slug'] ?? e['name']) : e).toString())
         .toList();
