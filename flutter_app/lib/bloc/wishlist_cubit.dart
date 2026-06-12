@@ -3,7 +3,7 @@ import '../models/product.dart';
 import '../repository/wishlist_repository.dart';
 import 'wishlist_state.dart';
 
-/// Cubit (lightweight BLoC) managing the wishlist, persisted to local storage.
+
 class WishlistCubit extends Cubit<WishlistState> {
   final WishlistRepository repository;
 
