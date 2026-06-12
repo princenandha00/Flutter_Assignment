@@ -10,7 +10,7 @@ import 'product_state.dart';
 const _pageLimit = 20;
 const _searchDebounceDuration = Duration(milliseconds: 400);
 
-/// Debounce transformer used for the search event.
+
 EventTransformer<E> _debounce<E>(Duration duration) {
   return (events, mapper) => events.debounce(duration).switchMap(mapper);
 }
@@ -18,7 +18,7 @@ EventTransformer<E> _debounce<E>(Duration duration) {
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRepository repository;
 
-  // Local price range applied client-side (dummyjson has no native price filter).
+ 
   List<Product> _allLoaded = [];
 
   ProductBloc({required this.repository}) : super(const ProductState()) {
@@ -28,7 +28,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<ProductCategoryChanged>(_onCategoryChanged);
     on<ProductPriceRangeChanged>(_onPriceRangeChanged);
 
-    // Debounced search to avoid hitting the API on every keystroke.
+   
     on<ProductSearchChanged>(
       _onSearchChanged,
       transformer: _debounce(_searchDebounceDuration),
