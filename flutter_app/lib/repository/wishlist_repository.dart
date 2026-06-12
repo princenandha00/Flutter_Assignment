@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/product.dart';
 
-/// Persists wishlist products as JSON in SharedPreferences (local storage).
+
 class WishlistRepository {
   static const String _key = 'wishlist_products';
 
